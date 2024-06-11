@@ -1,8 +1,8 @@
-from ._anvil_designer import DashboardTemplate
+from ._anvil_designer import formImportTemplate
 from anvil import *
 
 
-class Dashboard(DashboardTemplate):
+class formImport(formImportTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)

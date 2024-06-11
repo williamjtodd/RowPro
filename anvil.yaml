@@ -9,4 +9,4 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: Dashboard}
+startup: {type: form, module: formDashboard}
