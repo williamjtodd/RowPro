@@ -13,14 +13,16 @@ components:
     type: GridPanel
     layout_properties: {grid_position: 'VWZJKQ,SHEEXF'}
     components:
-    - name: btnProfile_copy
+    - name: btnProfile
       properties: {text: Profile, icon: 'fa:user', border: solid}
       type: Button
       layout_properties: {row: IHTKXH, width_xs: 2, col_xs: 0}
+      event_bindings: {click: btnProfile_click}
     - name: btnImport
       properties: {text: Import, icon: '', border: solid}
       type: Button
       layout_properties: {row: IHTKXH, width_xs: 2, col_xs: 2}
+      event_bindings: {click: btnImport_click}
   - name: lblTItle
     properties: {align: center, text: RowPro, bold: true, font_size: 30, font: ''}
     type: Label
@@ -42,7 +44,19 @@ components:
     - name: tbSearchWorkout
       properties: {placeholder: 🔍 Search Workout, font_size: 11, align: center, border: solid}
       type: TextBox
-      layout_properties: {row: EGQVKV, width_xs: 2, col_xs: 1}
+      layout_properties: {row: UVIJVA, width_xs: 2, col_xs: 3}
+    - name: grid_panel_5
+      properties: {}
+      type: GridPanel
+      layout_properties: {row: EGQVKV, width_xs: 3, col_xs: 2}
+    - name: button_1
+      properties: {text: Select y-axis value, align: center, font_size: 10}
+      type: Button
+      layout_properties: {row: EGQVKV, width_xs: 2, col_xs: 7}
+    - name: plot_1
+      properties: {height: 156.4765625}
+      type: Plot
+      layout_properties: {row: EGQVKV, width_xs: 3, col_xs: 9}
     - name: lblWorkout
       properties: {text: Workout, icon: 'fa:arrows-v', border: solid, align: center}
       type: Label
@@ -51,6 +65,15 @@ components:
       properties: {text: Date (dd/mm/yyyy), border: solid, align: center}
       type: Label
       layout_properties: {row: RZVCPY, width_xs: 2, col_xs: 2}
+  - name: grid_panel_4
+    properties: {}
+    type: GridPanel
+    layout_properties: {grid_position: 'YGVUEZ,IICBMZ'}
+    components:
+    - name: repeating_panel_1
+      properties: {item_template: null}
+      type: RepeatingPanel
+      layout_properties: {row: NILKKE, width_xs: 4, col_xs: 0}
 - type: FlowPanel
   properties: {}
   name: navbar_links

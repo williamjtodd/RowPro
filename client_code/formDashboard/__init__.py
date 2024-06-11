@@ -1,5 +1,9 @@
 from ._anvil_designer import formDashboardTemplate
 from anvil import *
+import plotly.graph_objects as go
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 
 
 class formDashboard(formDashboardTemplate):
@@ -8,3 +12,12 @@ class formDashboard(formDashboardTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  def btnProfile_click(self, **event_args):
+    open_form('formProfile')
+    pass
+
+  def btnImport_click(self, **event_args):
+    open_form('formImport')
+    pass
+    

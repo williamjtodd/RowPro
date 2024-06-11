@@ -10,3 +10,19 @@ services:
   client_config: {}
   server_config: {}
 startup: {type: form, module: formDashboard}
+db_schema:
+  tblauthentication:
+    client: none
+    server: full
+    columns: []
+    title: tblAuthentication
+  tbluserelements:
+    client: none
+    server: full
+    columns: []
+    title: tblUserElements
+  tblworkoutdata:
+    client: none
+    server: full
+    columns: []
+    title: tblWorkoutData
