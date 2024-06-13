@@ -23,7 +23,7 @@ components:
       type: Button
       layout_properties: {row: IHTKXH, width_xs: 2, col_xs: 2}
       event_bindings: {click: btnImport_click}
-  - name: lblTItle
+  - name: lblTitle
     properties: {align: center, text: RowPro, bold: true, font_size: 30, font: ''}
     type: Label
     layout_properties: {grid_position: 'YHALNG,VFANSX'}
@@ -39,41 +39,60 @@ components:
   - name: grid_panel_1
     properties: {spacing_below: small}
     type: GridPanel
-    layout_properties: {grid_position: 'JOTBUC,NCDRCK'}
+    layout_properties: {grid_position: 'JOTBUC,NCDRCK DYBVZV,HCFZFN'}
     components:
     - name: tbSearchWorkout
       properties: {placeholder: 🔍 Search Workout, font_size: 11, align: center, border: solid}
       type: TextBox
-      layout_properties: {row: UVIJVA, width_xs: 2, col_xs: 3}
-    - name: grid_panel_5
-      properties: {}
-      type: GridPanel
-      layout_properties: {row: EGQVKV, width_xs: 3, col_xs: 2}
-    - name: button_1
-      properties: {text: Select y-axis value, align: center, font_size: 10}
-      type: Button
-      layout_properties: {row: EGQVKV, width_xs: 2, col_xs: 7}
-    - name: plot_1
-      properties: {height: 156.4765625}
-      type: Plot
-      layout_properties: {row: EGQVKV, width_xs: 3, col_xs: 9}
+      layout_properties: {row: UVIJVA, width_xs: 6, col_xs: 1}
     - name: lblWorkout
       properties: {text: Workout, icon: 'fa:arrows-v', border: solid, align: center}
       type: Label
-      layout_properties: {row: RZVCPY, width_xs: 2, col_xs: 0}
+      layout_properties: {row: RZVCPY, width_xs: 3, col_xs: 1}
     - name: lblDate
       properties: {text: Date (dd/mm/yyyy), border: solid, align: center}
       type: Label
-      layout_properties: {row: RZVCPY, width_xs: 2, col_xs: 2}
+      layout_properties: {row: RZVCPY, width_xs: 4, col_xs: 4}
   - name: grid_panel_4
     properties: {}
     type: GridPanel
-    layout_properties: {grid_position: 'YGVUEZ,IICBMZ'}
+    layout_properties: {grid_position: 'JOTBUC,NCDRCK MNWZZZ,UIEQUB'}
     components:
-    - name: repeating_panel_1
-      properties: {item_template: null}
+    - name: rpDash
+      properties: {item_template: formDashboard.ItemTemplate1}
       type: RepeatingPanel
-      layout_properties: {row: NILKKE, width_xs: 4, col_xs: 0}
+      layout_properties: {row: JUHOYQ, width_xs: 12, col_xs: 0}
+  - name: btnBarGraph
+    properties: {text: Bar Graph, border: solid black}
+    type: Button
+    layout_properties: {grid_position: 'JOTBUC,MXZEMC XFEOMC,OATKRC'}
+  - name: btnLineGraph
+    properties: {text: Line Graph, border: solid black}
+    type: Button
+    layout_properties: {grid_position: 'JOTBUC,MXZEMC XFEOMC,YNEAOQ'}
+  - name: btnScatterPlot
+    properties: {text: Scatter Plot, border: solid black}
+    type: Button
+    layout_properties: {grid_position: 'JOTBUC,MXZEMC XFEOMC,NMPZJZ'}
+  - name: grid_panel_5
+    properties: {}
+    type: GridPanel
+    layout_properties: {grid_position: 'JOTBUC,MXZEMC KUMSXJ,NMYSFM'}
+    components:
+    - name: ddYValue
+      properties:
+        items: [Set y value]
+      type: DropDown
+      layout_properties: {row: MLCIJW, width_xs: 4, col_xs: 1}
+    - name: plot_1
+      properties: {height: 169.8359375}
+      type: Plot
+      layout_properties: {row: MLCIJW, width_xs: 7, col_xs: 4}
+    - name: ddXValue
+      properties:
+        items: [Set x value]
+      type: DropDown
+      layout_properties: {row: NJUAIB, width_xs: 5, col_xs: 7}
 - type: FlowPanel
   properties: {}
   name: navbar_links
