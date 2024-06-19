@@ -16,10 +16,12 @@ components:
       font_size: 11
     type: Button
     layout_properties: {grid_position: 'QPPZVN,NOOTGN'}
+    event_bindings: {click: btnDashboard_click}
   - name: btnProfile
     properties: {text: Profile, role: outlined-button, font_size: 11}
     type: Button
     layout_properties: {grid_position: 'QPPZVN,PMKNNB'}
+    event_bindings: {click: btnProfile_click}
   - name: spacer_1
     properties: {height: 32}
     type: Spacer
@@ -48,6 +50,22 @@ components:
     properties: {align: center, text: Current Workouts, bold: true, font: '', font_size: 30}
     type: Label
     layout_properties: {grid_position: 'MVBWDX,IPZZFS'}
+  - name: repeating_panel_1
+    properties: {item_template: formImport.ItemTemplate2}
+    type: RepeatingPanel
+    layout_properties: {grid_position: 'ULBCIT,GFOFKU'}
+  - name: lblImportWorkouts
+    properties: {align: center, text: Import Workouts, font_size: 20}
+    type: Label
+    layout_properties: {grid_position: 'KHRODT,XBFRXS'}
+  - name: selectCSVFile
+    properties: {text: Select CSV File}
+    type: FileLoader
+    layout_properties: {grid_position: 'IWROII,UPXRFR'}
+  - name: btnImportWorkout
+    properties: {text: Import, role: outlined-button}
+    type: Button
+    layout_properties: {grid_position: 'MKWLNI,KAFGTR'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
