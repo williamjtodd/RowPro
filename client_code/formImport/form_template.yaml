@@ -7,6 +7,47 @@ components:
   properties: {}
   name: content_panel
   layout_properties: {slot: default}
+  components:
+  - name: btnDashboard
+    properties:
+      text: |
+        Dashboard
+      role: outlined-button
+      font_size: 11
+    type: Button
+    layout_properties: {grid_position: 'QPPZVN,NOOTGN'}
+  - name: btnProfile
+    properties: {text: Profile, role: outlined-button, font_size: 11}
+    type: Button
+    layout_properties: {grid_position: 'QPPZVN,PMKNNB'}
+  - name: spacer_1
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'QPPZVN,QZGHWI'}
+  - name: spacer_2
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'QPPZVN,OEGQYL'}
+  - name: spacer_3
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'QPPZVN,OORCME'}
+  - name: spacer_4
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'QPPZVN,OAUICD'}
+  - name: spacer_5
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'QPPZVN,SUTUTC'}
+  - name: spacer_6
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'QPPZVN,IDGQJJ'}
+  - name: lblImportTitle
+    properties: {align: center, text: Current Workouts, bold: true, font: '', font_size: 30}
+    type: Label
+    layout_properties: {grid_position: 'MVBWDX,IPZZFS'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
