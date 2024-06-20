@@ -14,15 +14,60 @@ db_schema:
   tblauthentication:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: IDAuth
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: Email
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Password
+      admin_ui: {width: 200, order: 2}
+      type: string
     title: tblAuthentication
   tbluserelements:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: IDUser
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: IDAuth
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Email
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: Password
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: Name
+      admin_ui: {width: 200, order: 4}
+      type: string
+    - name: Age
+      admin_ui: {width: 200, order: 5}
+      type: number
     title: tblUserElements
   tblworkoutdata:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: IDWorkout
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: IDUser
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Distance
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: StrokeRate
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: StrokeCount
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: AvgWatts
+      admin_ui: {width: 200, order: 5}
+      type: number
     title: tblWorkoutData
