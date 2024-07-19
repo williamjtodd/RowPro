@@ -13,6 +13,7 @@ class formDashboard(formDashboardTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+  
 
   def btnProfile_click(self, **event_args):
     open_form('formProfile')

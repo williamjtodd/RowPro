@@ -12,3 +12,10 @@ class formLogin(formLoginTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  def btnSignUp_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    email = self.tbEmail.text
+    password = self.tbPassword.text
+    result = anvil.server.call("setAuthentication", email, password)
+    alert(result)

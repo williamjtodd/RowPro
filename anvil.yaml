@@ -9,7 +9,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: formDashboard}
+startup: {type: form, module: formLogin}
 db_schema:
   tblauthentication:
     client: none
