@@ -32,11 +32,19 @@ def getAuthentication(IDAuth):
 
 @anvil.server.callable
 def checkCredentials(email, password):
+    print(f"Checking credentials for email: {email}")
     # Fetch the user by email and check the password
     row = app_tables.tblauthentication.get(Email=email)
-    if row and row['Password'] == password:
-        return True
+    if row:
+        print(f"Found user: {row}")
+        if row['Password'] == password:
+            print("Password match")
+            return True
+        else:
+            print("Password does not match")
+            return False
     else:
+        print("User not found")
         return False
 
 '''SETTERS'''
