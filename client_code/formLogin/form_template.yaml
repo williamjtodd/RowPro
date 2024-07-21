@@ -66,6 +66,7 @@ components:
       properties: {text: Log In, role: outlined-button, font_size: 12}
       type: Button
       layout_properties: {grid_position: 'SVXXXK,DEUYTJ'}
+      event_bindings: {click: btnLogIn_click}
   - name: spacer_2
     properties: {height: 32}
     type: Spacer

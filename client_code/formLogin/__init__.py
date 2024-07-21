@@ -7,15 +7,25 @@ from anvil.tables import app_tables
 
 
 class formLogin(formLoginTemplate):
-  def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    self.init_components(**properties)
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+        # Any code you write here will run before the form opens.
 
-  def btnSignUp_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    email = self.tbEmail.text
-    password = self.tbPassword.text
-    result = anvil.server.call("setAuthentication", email, password)
-    alert(result)
+    def btnSignUp_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        email = self.tbEmail.text
+        password = self.tbPassword.text
+        result = anvil.server.call("setAuthentication", email, password)
+        alert(result)
+
+    def btnLogIn_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        alert("Opening Dashboard")
+        email = self.tbEmail.text
+        password = self.tbPassword.text
+        if anvil.server.call("checkCredentials", email, password):
+            open_form('formDashboard')
+        else:
+            alert("Invalid email or password. Please try again.")

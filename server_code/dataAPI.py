@@ -19,7 +19,7 @@ import anvil.server
 '''GETTERS'''
 @anvil.server.callable
 def getAuthentication(IDAuth):
-    # Fetch the customer details by name
+    # Fetch the customer details by IDAuth
     row = app_tables.tblauthentication.get(IDAuth=IDAuth)
     if row:
         return {
@@ -30,21 +30,29 @@ def getAuthentication(IDAuth):
     else:
         return None
 
+@anvil.server.callable
+def checkCredentials(email, password):
+    # Fetch the user by email and check the password
+    row = app_tables.tblauthentication.get(Email=email)
+    if row and row['Password'] == password:
+        return True
+    else:
+        return False
 
 '''SETTERS'''
 @anvil.server.callable
-def setAuthentication(IDAuth, email, password):
-  # Generate a unique bill reference number
+def setAuthentication(email, password):
+    # Generate a unique IDAuth
     existing_rows = list(app_tables.tblauthentication.search(tables.order_by("IDAuth", ascending=False)))
     if existing_rows:
-        last_bill_ref = existing_rows[0]['IDAuth']
-        new_bill_ref = int(last_bill_ref) + 1
+        last_id_auth = existing_rows[0]['IDAuth']
+        new_id_auth = last_id_auth + 1
     else:
-        new_bill_ref = 1
+        new_id_auth = 1
 
-    # Add a new row to the table `tbluserdetails`
+    # Add a new row to the table `tblauthentication`
     app_tables.tblauthentication.add_row(
-        IDAuth=str(new_bill_ref).zfill(8),  # Ensure 8-digit Bill Reference Number. The reference number could be more complex, but there is no point. 
+        IDAuth=new_id_auth,  # Ensure IDAuth is a number
         Email=email,
         Password=password,
     )
