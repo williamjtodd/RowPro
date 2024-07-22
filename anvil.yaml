@@ -12,66 +12,62 @@ services:
 startup: {type: form, module: formLogin}
 db_schema:
   tblauthentication:
+    title: tblAuthentication
     client: none
     server: full
     columns:
     - name: IDAuth
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: number
     - name: Email
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: string
     - name: Password
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: string
-    - name: Column4
-      admin_ui: {width: 200, order: 3}
-      type: link_single
-      target: tbluserelements
-    title: tblAuthentication
   tbluserelements:
+    title: tblUserElements
     client: none
     server: full
     columns:
     - name: IDUser
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: number
     - name: IDAuth
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: number
     - name: Email
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: string
     - name: Password
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {width: 200}
       type: string
     - name: Name
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {width: 200}
       type: string
     - name: Age
-      admin_ui: {width: 200, order: 5}
+      admin_ui: {width: 200}
       type: number
-    title: tblUserElements
   tblworkoutdata:
+    title: tblWorkoutData
     client: none
     server: full
     columns:
     - name: IDWorkout
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: number
     - name: IDUser
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: number
     - name: Distance
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: number
     - name: StrokeRate
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {width: 200}
       type: number
     - name: StrokeCount
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {width: 200}
       type: number
     - name: AvgWatts
-      admin_ui: {width: 200, order: 5}
+      admin_ui: {width: 200}
       type: number
-    title: tblWorkoutData
