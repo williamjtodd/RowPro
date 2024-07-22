@@ -24,6 +24,10 @@ db_schema:
     - name: Password
       admin_ui: {width: 200, order: 2}
       type: string
+    - name: Column4
+      admin_ui: {width: 200, order: 3}
+      type: link_single
+      target: tbluserelements
     title: tblAuthentication
   tbluserelements:
     client: none
