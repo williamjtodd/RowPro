@@ -33,6 +33,7 @@ components:
       properties: {text: '', align: right, icon: 'fa:window-close'}
       type: Button
       layout_properties: {grid_position: 'XMZCXF,UMZPLT'}
+      event_bindings: {click: btnClose_click}
     - name: spacer_5
       properties: {height: 7.31640625}
       type: Spacer

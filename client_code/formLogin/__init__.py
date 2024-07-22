@@ -4,7 +4,6 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .formDashboard import formDashboard  # Ensure formDashboard is imported
 
 class formLogin(formLoginTemplate):
     def __init__(self, **properties):
@@ -30,8 +29,13 @@ class formLogin(formLoginTemplate):
         is_authenticated = anvil.server.call("checkCredentials", email, password)
         print(f"Authenticated: {is_authenticated}")
         if is_authenticated:
-            print("Opening formDashboard...")
-            open_form(formDashboard())  # Ensure it opens the form correctly
+            print("Opening formDashboard...") 
+            open_form('formDashboard')# Ensure it opens the form correctly
         else:
             print("Invalid credentials")
             alert("Invalid email or password. Please try again.")
+
+    def btnClose_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      open_form('formLogin.formGoBack')
+      pass

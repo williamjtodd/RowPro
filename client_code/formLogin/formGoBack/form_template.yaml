@@ -1,0 +1,19 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - name: btnBackLogin
+    properties: {text: Go to Login}
+    type: Button
+    layout_properties: {grid_position: 'NYDWDI,JTEOEG'}
+    event_bindings: {click: btnBackLogin_click}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
