@@ -17,6 +17,7 @@ class formLogin(formLoginTemplate):
         email = self.tbEmail.text
         password = self.tbPassword.text
         result = anvil.server.call("setAuthentication", email, password)
+        anvil.server.call('setUserElements', email, password)
         alert(result)
 
     def btnLogIn_click(self, **event_args):

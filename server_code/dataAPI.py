@@ -32,10 +32,11 @@ def getAuthentication(IDAuth):
 
 @anvil.server.callable
 def getUserID(IDUser):
-    # Fetch the customer details by IDAuth
-    row = app_tables.tblauthentication.get(IDUser=IDUser)
+    # Fetch the customer details 
+    row = app_tables.tbluserelements.get(IDUser=IDUser)
     if row:
         return {
+            "IDUser": row['IDUser'],
             "IDAuth": row['IDAuth'],
             "Email": row['Email'],
             "Password": row['Password']
@@ -76,5 +77,30 @@ def setAuthentication(email, password):
         IDAuth=new_id_auth,  # Ensure IDAuth is a number
         Email=email,
         Password=password,
+
     )
     return "Created new customer record."
+
+@anvil.server.callable
+def setUserElements(email, password):
+  userexisting_rows = list(app_tables.tbluserelements.search(tables.order_by("IDAuth", ascending=False)))
+  if userexisting_rows:
+    last_id_user = userexisting_rows[0]['IDUser']
+    new_id_user = last_id_user + 1
+  else:
+    new_id_user = 1
+
+  # Add a new row to the table tbluserelements
+  app_tables.tbluserelements.add_row(
+    IDUser=new_id_user,
+    IDAuth=new_id_user,
+    Email=email,
+    Password=password,
+    
+  )
+
+
+
+
+  
+  return
