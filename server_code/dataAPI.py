@@ -31,6 +31,19 @@ def getAuthentication(IDAuth):
         return None
 
 @anvil.server.callable
+def getUserID(IDUser):
+    # Fetch the customer details by IDAuth
+    row = app_tables.tblauthentication.get(IDUser=IDUser)
+    if row:
+        return {
+            "IDAuth": row['IDAuth'],
+            "Email": row['Email'],
+            "Password": row['Password']
+        }
+    else:
+        return None
+
+@anvil.server.callable
 def checkCredentials(email, password):
     print(f"Checking credentials for email: {email}")
     # Fetch the user by email and check the password
@@ -58,7 +71,7 @@ def setAuthentication(email, password):
     else:
         new_id_auth = 1
 
-    # Add a new row to the table `tblauthentication`
+    # Add a new row to the table tblauthentication
     app_tables.tblauthentication.add_row(
         IDAuth=new_id_auth,  # Ensure IDAuth is a number
         Email=email,
