@@ -48,6 +48,9 @@ db_schema:
     - name: Age
       admin_ui: {width: 200}
       type: number
+    - name: ProfilePicture
+      admin_ui: {width: 200, order: 6}
+      type: media
   tblworkoutdata:
     title: tblWorkoutData
     client: none
