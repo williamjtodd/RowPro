@@ -105,7 +105,11 @@ components:
   - name: tbAge
     properties: {role: outlined, align: center, placeholder: E.g. '25'}
     type: TextBox
-    layout_properties: {grid_position: 'YGRUAC,IIYPFK'}
+    layout_properties: {grid_position: 'YGRUAC,IIYPFK YQAPTB,HGRFJV'}
+  - name: btnSubmit
+    properties: {text: Submit}
+    type: Button
+    layout_properties: {grid_position: 'YGRUAC,IIYPFK HKSHBA,OPSNJR'}
   - name: spacer_12
     properties: {height: 32}
     type: Spacer

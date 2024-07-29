@@ -20,10 +20,10 @@ db_schema:
       admin_ui: {width: 200}
       type: number
     - name: Email
-      admin_ui: {width: 200}
+      admin_ui: {width: 200, order: 1}
       type: string
     - name: Password
-      admin_ui: {width: 200}
+      admin_ui: {width: 200, order: 2}
       type: string
   tbluserelements:
     title: tblUserElements
