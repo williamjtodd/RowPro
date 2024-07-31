@@ -1,5 +1,6 @@
 from ._anvil_designer import formDashboardTemplate
 from anvil import *
+import anvil.users
 import anvil.server
 import plotly.graph_objects as go
 import anvil.tables as tables
