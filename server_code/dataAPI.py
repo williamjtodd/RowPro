@@ -1,21 +1,5 @@
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
 import anvil.server
 import anvil.users
-
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
 
 @anvil.server.callable
 def sign_up_user(email, password):
@@ -36,12 +20,8 @@ def login_user(email, password):
             return {"status": "success"}
         else:
             return {"status": "error", "message": "Login failed."}
-    except anvil.users.AuthenticationFailed as e:
-        if "confirmed your email address" in str(e):
-            return {"status": "error", "message": "Please confirm your email address before logging in."}
-        return {"status": "error", "message": f"Authentication failed: {str(e)}"}
-
-
+    except anvil.users.AuthenticationFailed:
+        return {"status": "error", "message": "Invalid email or password."}
 
 @anvil.server.callable
 def get_logged_in_user_email():
@@ -52,11 +32,29 @@ def get_logged_in_user_email():
         return None
 
 @anvil.server.callable
-def update_profile(name, age):
-    user = anvil.users.get_user()
-    if user:
-        user['name'] = name
-        user['age'] = age
-        return {"status": "success"}
-    else:
-        return {"status": "error", "message": "User not logged in."}
+def update_user_profile(name, age):
+    try:
+        user = anvil.users.get_user()
+        if user:
+            # Ensure 'name' and 'age' fields are updated
+            user['name'] = name
+            user['age'] = age
+            return {"status": "success"}
+        else:
+            return {"status": "error", "message": "No user logged in."}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+@anvil.server.callable
+def get_user_profile():
+    try:
+        user = anvil.users.get_user()
+        if user:
+            return {
+                "name": user.get('name', ''),
+                "age": user.get('age', 0)
+            }
+        else:
+            return {"status": "error", "message": "No user logged in."}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}

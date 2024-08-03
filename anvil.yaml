@@ -23,10 +23,10 @@ db_schema:
       admin_ui: {width: 200}
       type: number
     - name: Email
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: string
     - name: Password
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: string
   tbluserelements:
     title: tblUserElements
@@ -34,9 +34,6 @@ db_schema:
     server: full
     columns:
     - name: IDUser
-      admin_ui: {width: 200}
-      type: number
-    - name: IDAuth
       admin_ui: {width: 200}
       type: number
     - name: Email
@@ -52,7 +49,7 @@ db_schema:
       admin_ui: {width: 200}
       type: number
     - name: ProfilePicture
-      admin_ui: {width: 200, order: 6}
+      admin_ui: {width: 200}
       type: media
   tblworkoutdata:
     title: tblWorkoutData
@@ -78,25 +75,37 @@ db_schema:
       admin_ui: {width: 200}
       type: number
   users:
+    title: Users
     client: none
     server: full
     columns:
     - name: email
-      admin_ui: {order: 0, width: 200}
+      admin_ui: {width: 200}
       type: string
     - name: enabled
-      admin_ui: {order: 1, width: 200}
+      admin_ui: {width: 200}
       type: bool
     - name: last_login
-      admin_ui: {order: 2, width: 200}
+      admin_ui: {width: 200}
       type: datetime
     - name: password_hash
-      admin_ui: {order: 3, width: 200}
+      admin_ui: {width: 200}
       type: string
     - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
+      admin_ui: {width: 200}
       type: number
     - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
+      admin_ui: {width: 200}
       type: bool
-    title: Users
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
+    - name: name
+      admin_ui: {order: 7, width: 200}
+      type: string
+    - name: age
+      admin_ui: {order: 8, width: 200}
+      type: number
+    - name: Profile Picture
+      admin_ui: {width: 200, order: 9}
+      type: media

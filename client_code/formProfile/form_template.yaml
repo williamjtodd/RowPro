@@ -110,6 +110,7 @@ components:
     properties: {text: Submit}
     type: Button
     layout_properties: {grid_position: 'YGRUAC,IIYPFK HKSHBA,OPSNJR'}
+    event_bindings: {click: btnSubmit_click}
   - name: spacer_12
     properties: {height: 32}
     type: Spacer
