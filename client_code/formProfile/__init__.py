@@ -6,13 +6,15 @@ class formProfile(formProfileTemplate):
 
     def __init__(self, **properties):
         self.init_components(**properties)
-        self.load_user_profile()  # Call this method to load the user profile
+        
+        # Populate the fields with user profile data
+        self.load_user_profile()
 
     def load_user_profile(self):
         try:
             result = anvil.server.call('get_user_profile')
             # Debugging output
-            alert(f"Profile data received: {result}")
+            print(f"Profile data received: {result}")  # Debugging
             if result.get('status') == 'success':
                 # Update the text boxes with the user's profile data
                 self.tbName.text = result.get('name', '')

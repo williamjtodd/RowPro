@@ -50,11 +50,14 @@ def get_user_profile():
     try:
         user = anvil.users.get_user()
         if user:
+            # Return profile data, ensure it's always a dictionary
             return {
+                "status": "success",
                 "name": user.get('name', ''),
                 "age": user.get('age', 0)
             }
         else:
             return {"status": "error", "message": "No user logged in."}
     except Exception as e:
+        # Return error details
         return {"status": "error", "message": str(e)}
