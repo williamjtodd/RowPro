@@ -1,42 +1,45 @@
 from ._anvil_designer import formLoginTemplate
 from anvil import *
 import anvil.server
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
 
 class formLogin(formLoginTemplate):
+
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run before the form opens.
+    def btnLogIn_click(self, **event_args):
+        email = self.tbEmail.text
+        password = self.tbPassword.text
+        result = anvil.server.call('login_user', email, password)
+        if result['status'] == 'success':
+            Notification("Login successful", timeout=2).show()
+            open_form('formProfile')
+        else:
+            alert(result['message'])
 
     def btnSignUp_click(self, **event_args):
-        """This method is called when the button is clicked"""
         email = self.tbEmail.text
         password = self.tbPassword.text
-        result = anvil.server.call("setAuthentication", email, password)
-        anvil.server.call('setUserElements', email, password,)
-        alert(result)
+        if not email or not password:
+            alert("Please fill in all fields.")
+            return
 
-    def btnLogIn_click(self, **event_args):
-        """This method is called when the button is clicked"""
-        print("btnLogIn_click method called")
-        alert("Attempting to log in...")  # Test alert
-        email = self.tbEmail.text
-        password = self.tbPassword.text
-        print(f"Email: {email}, Password: {password}")
-        is_authenticated = anvil.server.call("checkCredentials", email, password)
-        print(f"Authenticated: {is_authenticated}")
-        if is_authenticated:
-            print("Opening formDashboard...") 
-            open_form('formDashboard')# Ensure it opens the form correctly
+        confirm_password_box = TextBox(type="password")
+        confirm_password = alert(content=confirm_password_box, title="Confirm Password", buttons=[("OK", True), ("Cancel", False)])
+        
+        if not confirm_password:
+            return
+
+        if confirm_password_box.text != password:
+            alert("Passwords do not match.")
+            return
+
+        result = anvil.server.call('sign_up_user', email, password)
+        if result['status'] == 'success':
+            Notification("Sign-up successful", timeout=2).show()
+            open_form('formProfile')
         else:
-            print("Invalid credentials")
-            alert("Invalid email or password. Please try again.")
+            alert(result['message'])
 
     def btnClose_click(self, **event_args):
-      """This method is called when the button is clicked"""
-      open_form('formLogin.formGoBack')
-      pass
+        self.remove_from_parent()
