@@ -91,3 +91,4 @@ db_schema:
     - name: pfp
       admin_ui: {order: 9, width: 200}
       type: media
+metadata: {title: RowPro}
