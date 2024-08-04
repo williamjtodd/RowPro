@@ -105,6 +105,22 @@ def get_user_workouts():
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
+@anvil.server.callable
+def get_workout_data():
+  try:
+    # Fetch all workout data
+    workout_data = app_tables.tblworkoutdata.search()
+    
+    # Extract relevant columns and convert to list of dictionaries
+    return [
+      {
+        'StrokeCount': row['StrokeCount'],
+        'AvgWatts': row['AvgWatts']
+      }
+      for row in workout_data
+    ]
+  except Exception as e:
+    return {'status': 'error', 'message': str(e)}
 
 
 

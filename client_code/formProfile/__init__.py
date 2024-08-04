@@ -17,7 +17,7 @@ class formProfile(formProfileTemplate):
                 self.tbAge.text = str(result.get('age', ''))
                 self.flPFP.file = result.get('pfp', '')
             else:
-                alert(f"Error loading profile: {result.get('message', 'Unknown error')}")
+                alert("Profile Pictures are currently unavailable.")
         except Exception as e:
             alert(f"Error loading profile: {str(e)}")
 
