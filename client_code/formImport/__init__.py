@@ -17,20 +17,22 @@ class formImport(formImportTemplate):
     self.uploaded_file = None  # Initialize a variable to store the file
 
 
-
-  def file_loader_1_change(self, file, **event_args):
+  def selectedCSVFile_change(self, file, **event_args):
     # Store the uploaded file
-    self.uploaded_file = file
+    if file:
+      self.uploaded_file = file
+      print("File uploaded:", self.uploaded_file.name)  # Debugging line
 
   def process_button_click(self, **event_args):
     if self.uploaded_file:
       # Call the server function and pass the stored file object
-      result = anvil.server.call('process_csv', self.uploaded_file)
-      # Use the result as needed (e.g., display in a DataGrid)
-      print(result)
-    else:
-      print("No file uploaded.")
-    pass
+      try:
+        result = anvil.server.call('process_csv', self.uploaded_file)
+        print(result)
+      except Exception as e:
+        print("Error processing file:", e)  # Debugging line
+      else:
+        print("No file uploaded.")
 
 
   

@@ -4,13 +4,19 @@ from anvil.tables import app_tables
 import anvil.server
 import anvil.users
 import pandas as pd
+import io
 
 @anvil.server.callable
 def process_csv(file):
-    # Load the file into a pandas DataFrame
-    df = pd.read_csv(file)
-    # Perform operations on the DataFrame
-    return df.head().to_dict()  # For example, return the first few rows
+    try:
+        # Convert StreamingMedia to a file-like object
+        file_stream = io.BytesIO(file.get_bytes())
+        # Load the file into a pandas DataFrame
+        df = pd.read_csv(file_stream)
+        # Perform operations on the DataFrame
+        return df.head().to_dict()  # Example: return the first few rows
+    except Exception as e:
+        return {"error": str(e)}  # Return error details if something goes wrong
 
 @anvil.server.callable
 def sign_up_user(email, password):

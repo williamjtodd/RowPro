@@ -62,6 +62,7 @@ components:
     properties: {text: Select CSV File}
     type: FileLoader
     layout_properties: {grid_position: 'IWROII,UPXRFR'}
+    event_bindings: {change: selectedCSVFile_change}
   - name: process_button
     properties: {text: Import, role: outlined-button}
     type: Button
