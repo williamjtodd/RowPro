@@ -34,14 +34,32 @@ class formImport(formImportTemplate):
   def process_button_click(self, **event_args):
     print("Process button clicked")  # Debugging line
     if self.uploaded_file:
-      try:
-        # Call the server function and pass the stored file object
-        result = anvil.server.call('process_csv', self.uploaded_file)
-        print("Result from server:", result)  # Debugging line
-      except Exception as e:
-        print("Error processing file:", e)  # Debugging line
+        try:
+            # Call the server function and pass the stored file object
+            result = anvil.server.call('process_csv', self.uploaded_file)
+            print("Result from server:", result)  # Debugging line
+            
+            # Update text labels with workout details
+            workout_number = 1
+            for workout_name, details in result.items():
+                # Construct the label name
+                label_name = f'lblWorkout{workout_number}'
+                if hasattr(self, label_name):
+                    label = getattr(self, label_name)
+                    # Format details into a string for display
+                    details_text = '\n'.join([f"{k}: {v}" for k, v in details.items()])
+                    label.text = details_text
+                else:
+                    print(f"Label {label_name} not found.")
+                workout_number += 1
+        
+        except Exception as e:
+            print("Error processing file:", e)  # Debugging line
     else:
-      print("No file uploaded.")
+        print("No file uploaded.")
+
+
+
 
 
   

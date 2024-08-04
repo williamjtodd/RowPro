@@ -31,20 +31,16 @@ def process_csv(file):
         df_filtered = df_sorted[columns_to_keep]
         
         # Get the most recent records
-        # Adjust the number of recent records as needed, e.g., top 5
-        num_recent_records = 5
+        num_recent_records = 5  # Number of recent records to retrieve
         df_recent = df_filtered.head(num_recent_records)
         
-        # Convert DataFrame to a serializable format
-        result = df_recent.to_dict(orient='list')
+        # Convert DataFrame to a dictionary with named keys
+        result = {}
+        for i, row in df_recent.iterrows():
+            record_name = f'Workout {i + 1}'
+            result[record_name] = row.to_dict()
         
-        # Ensure all keys and values are serializable
-        result_serializable = {
-            str(k): [str(v) if isinstance(v, (int, float, str)) else str(v) for v in v_list]
-            for k, v_list in result.items()
-        }
-        
-        return result_serializable
+        return result
         
     except Exception as e:
         return {"error": str(e)}  # Return error details if something goes wrong

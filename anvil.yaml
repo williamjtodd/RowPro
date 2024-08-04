@@ -19,12 +19,6 @@ db_schema:
     client: none
     server: full
     columns:
-    - name: IDWorkout
-      admin_ui: {width: 200}
-      type: number
-    - name: IDUser
-      admin_ui: {width: 200}
-      type: number
     - name: Distance
       admin_ui: {width: 200}
       type: number
@@ -38,8 +32,12 @@ db_schema:
       admin_ui: {width: 200}
       type: number
     - name: Date
-      admin_ui: {width: 200, order: 1.5}
-      type: datetime
+      admin_ui: {order: 1.5, width: 200}
+      type: string
+    - name: IDUser
+      admin_ui: {width: 200, order: 0.5}
+      type: link_single
+      target: users
   tbluserelements:
     client: none
     server: full
