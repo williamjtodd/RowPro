@@ -70,7 +70,7 @@ components:
     properties: {text: Workout 3}
     type: Label
     layout_properties: {grid_position: 'IPWDPS,WAFRYL ARDNID,OZIBGR'}
-  - name: file_loader_1
+  - name: flPFP
     properties: {}
     type: FileLoader
     layout_properties: {grid_position: 'ALTNQG,MARBKE'}

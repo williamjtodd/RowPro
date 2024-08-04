@@ -1,3 +1,6 @@
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import anvil.server
 import anvil.users
 
@@ -24,40 +27,34 @@ def login_user(email, password):
         return {"status": "error", "message": "Invalid email or password."}
 
 @anvil.server.callable
-def get_logged_in_user_email():
-    user = anvil.users.get_user()
-    if user:
-        return user['email']
-    else:
-        return None
-
-@anvil.server.callable
-def update_user_profile(name, age):
+def get_user_profile():
     try:
         user = anvil.users.get_user()
         if user:
-            # Ensure 'name' and 'age' fields are updated
-            user['name'] = name
-            user['age'] = age
-            return {"status": "success"}
+            profile = app_tables.tbluserelements.get(user_id=user)
+            if profile:
+                return {"status": "success", "name": profile['name'], "age": profile['age'], "pfp": profile['pfp']}
+            else:
+                return {"status": "error", "message": "Profile not found."}
         else:
             return {"status": "error", "message": "No user logged in."}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
 @anvil.server.callable
-def get_user_profile():
+def update_user_profile(name, age, pfp):
     try:
         user = anvil.users.get_user()
         if user:
-            # Return profile data, ensure it's always a dictionary
-            return {
-                "status": "success",
-                "name": user.get('name', ''),
-                "age": user.get('age', 0)
-            }
+            profile = app_tables.tbluserelements.get(user_id=user)
+            if profile:
+                profile['name'] = name
+                profile['age'] = age
+                profile['pfp'] = pfp
+            else:
+                app_tables.tbluserelements.add_row(user_id=user, name=name, age=age, pfp=pfp)
+            return {"status": "success"}
         else:
             return {"status": "error", "message": "No user logged in."}
     except Exception as e:
-        # Return error details
         return {"status": "error", "message": str(e)}

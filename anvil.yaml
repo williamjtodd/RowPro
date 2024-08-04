@@ -14,43 +14,6 @@ services:
   server_config: {user_table: users}
 startup: {type: form, module: formLogin}
 db_schema:
-  tblauthentication:
-    title: tblAuthentication
-    client: none
-    server: full
-    columns:
-    - name: IDAuth
-      admin_ui: {width: 200}
-      type: number
-    - name: Email
-      admin_ui: {width: 200}
-      type: string
-    - name: Password
-      admin_ui: {width: 200}
-      type: string
-  tbluserelements:
-    title: tblUserElements
-    client: none
-    server: full
-    columns:
-    - name: IDUser
-      admin_ui: {width: 200}
-      type: number
-    - name: Email
-      admin_ui: {width: 200}
-      type: string
-    - name: Password
-      admin_ui: {width: 200}
-      type: string
-    - name: Name
-      admin_ui: {width: 200}
-      type: string
-    - name: Age
-      admin_ui: {width: 200}
-      type: number
-    - name: ProfilePicture
-      admin_ui: {width: 200}
-      type: media
   tblworkoutdata:
     title: tblWorkoutData
     client: none
@@ -74,6 +37,24 @@ db_schema:
     - name: AvgWatts
       admin_ui: {width: 200}
       type: number
+  tbluserelements:
+    client: none
+    server: full
+    columns:
+    - name: user_id
+      admin_ui: {width: 200, order: 0}
+      type: link_single
+      target: users
+    - name: name
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: age
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: pfp
+      admin_ui: {order: 3, width: 200}
+      type: media
+    title: tblUserElements
   users:
     title: Users
     client: none
@@ -106,6 +87,6 @@ db_schema:
     - name: age
       admin_ui: {order: 8, width: 200}
       type: number
-    - name: Profile Picture
-      admin_ui: {width: 200, order: 9}
+    - name: pfp
+      admin_ui: {order: 9, width: 200}
       type: media

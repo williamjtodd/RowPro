@@ -6,19 +6,18 @@ class formProfile(formProfileTemplate):
 
     def __init__(self, **properties):
         self.init_components(**properties)
-        
-        # Populate the fields with user profile data
         self.load_user_profile()
+      
+    def file_loader_1_change(self, file, **event_args):
+      self.image_1.source = self.flPFP
 
     def load_user_profile(self):
         try:
             result = anvil.server.call('get_user_profile')
-            # Debugging output
-            print(f"Profile data received: {result}")  # Debugging
             if result.get('status') == 'success':
-                # Update the text boxes with the user's profile data
                 self.tbName.text = result.get('name', '')
                 self.tbAge.text = str(result.get('age', ''))
+                self.flPFP.file = result.get('pfp', '')
             else:
                 alert(f"Error loading profile: {result.get('message', 'Unknown error')}")
         except Exception as e:
@@ -27,13 +26,7 @@ class formProfile(formProfileTemplate):
     def btnSubmit_click(self, **event_args):
         name = self.tbName.text
         age_text = self.tbAge.text
-
-        # Basic debugging to confirm method execution
-        alert("Submit button clicked!")
-        
-        # Debugging alerts
-        alert(f"Name: {name}")
-        alert(f"Age: {age_text}")
+        pfp = self.flPFP.file
 
         try:
             age = int(age_text)  # Convert age to integer
@@ -41,9 +34,8 @@ class formProfile(formProfileTemplate):
             alert("Please enter a valid age.")
             return
 
-        # Call the server function to update user profile
         try:
-            result = anvil.server.call('update_user_profile', name, age)
+            result = anvil.server.call('update_user_profile', name, age, pfp)
             if result['status'] == 'success':
                 Notification("Profile updated successfully.", timeout=2).show()
             else:
