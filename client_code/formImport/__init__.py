@@ -18,21 +18,30 @@ class formImport(formImportTemplate):
 
 
   def selectedCSVFile_change(self, file, **event_args):
-    # Store the uploaded file
+    # Check if a file is selected
     if file:
-      self.uploaded_file = file
-      print("File uploaded:", self.uploaded_file.name)  # Debugging line
+      # Validate file type
+      if file.name.lower().endswith('.csv'):
+        self.uploaded_file = file
+        print("File uploaded:", self.uploaded_file.name)  # Debugging line
+      else:
+        # Inform user that the file type is not supported
+        alert("Please upload a CSV file.")
+        self.uploaded_file = None  # Clear the uploaded file
+    else:
+      print("No file selected.")  # Debugging line
 
   def process_button_click(self, **event_args):
+    print("Process button clicked")  # Debugging line
     if self.uploaded_file:
-      # Call the server function and pass the stored file object
       try:
+        # Call the server function and pass the stored file object
         result = anvil.server.call('process_csv', self.uploaded_file)
-        print(result)
+        print("Result from server:", result)  # Debugging line
       except Exception as e:
         print("Error processing file:", e)  # Debugging line
-      else:
-        print("No file uploaded.")
+    else:
+      print("No file uploaded.")
 
 
   

@@ -13,8 +13,18 @@ def process_csv(file):
         file_stream = io.BytesIO(file.get_bytes())
         # Load the file into a pandas DataFrame
         df = pd.read_csv(file_stream)
-        # Perform operations on the DataFrame
-        return df.head().to_dict()  # Example: return the first few rows
+        
+        # Convert DataFrame to a serializable format
+        result = df.head().to_dict(orient='list')
+        
+        # Ensure all keys and values are serializable
+        result_serializable = {
+            str(k): [str(v) if isinstance(v, (int, float, str)) else str(v) for v in v_list]
+            for k, v_list in result.items()
+        }
+        
+        return result_serializable
+        
     except Exception as e:
         return {"error": str(e)}  # Return error details if something goes wrong
 
