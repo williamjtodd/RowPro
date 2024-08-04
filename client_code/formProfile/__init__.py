@@ -51,3 +51,8 @@ class formProfile(formProfileTemplate):
       """This method is called when the button is clicked"""
       open_form('formLogin')
       pass
+
+    def contact_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      anvil.alert("Developer contact information will be added soon.")
+      pass

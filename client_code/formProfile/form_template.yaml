@@ -9,12 +9,12 @@ components:
   layout_properties: {slot: default}
   components:
   - name: btnDashboard
-    properties: {text: Dashboard, role: outlined-button, font_size: 11}
+    properties: {text: Dashboard, role: outlined-button, font_size: 11, background: 'theme:Primary', foreground: 'theme:On Primary'}
     type: Button
     layout_properties: {grid_position: 'GXYAAU,HRPUMS'}
     event_bindings: {click: btnDashboard_click}
   - name: btnImport
-    properties: {text: Import, role: outlined-button, font_size: 11}
+    properties: {text: Import, role: outlined-button, font_size: 11, background: 'theme:Primary', foreground: 'theme:On Primary', icon: 'fa:upload'}
     type: Button
     layout_properties: {grid_position: 'GXYAAU,MAOWXZ'}
     event_bindings: {click: btnImport_click}
@@ -55,7 +55,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'NQBFIS,ALWRSV'}
   - name: image_1
-    properties: {}
+    properties: {source: _/theme/blank-profile-picture-973460_960_720.webp}
     type: Image
     layout_properties: {grid_position: 'IPWDPS,MNZMRS'}
   - name: lblRecent1
@@ -71,9 +71,10 @@ components:
     type: Label
     layout_properties: {grid_position: 'IPWDPS,WAFRYL ARDNID,OZIBGR'}
   - name: contact
-    properties: {text: Contact, align: center}
+    properties: {text: Contact, align: center, background: 'theme:Primary', foreground: 'theme:On Primary'}
     type: Button
     layout_properties: {grid_position: 'IPWDPS,WAFRYL XEHNAR,ITTDGY'}
+    event_bindings: {click: contact_click}
   - name: flPFP
     properties: {}
     type: FileLoader
@@ -111,12 +112,12 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'YGRUAC,IIYPFK YQAPTB,HGRFJV'}
   - name: btnSubmit
-    properties: {text: Save Changes}
+    properties: {text: Save Changes, background: 'theme:Primary', foreground: 'theme:On Primary'}
     type: Button
     layout_properties: {grid_position: 'YGRUAC,IIYPFK HKSHBA,OPSNJR'}
     event_bindings: {click: btnSubmit_click}
   - name: btnLogout
-    properties: {text: Logout}
+    properties: {text: Logout, background: 'theme:Primary', foreground: 'theme:On Primary'}
     type: Button
     layout_properties: {grid_position: 'YGRUAC,IIYPFK HKSHBA,SWDFKF'}
     event_bindings: {click: btnLogout_click}

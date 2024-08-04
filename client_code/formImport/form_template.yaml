@@ -14,14 +14,17 @@ components:
         Dashboard
       role: outlined-button
       font_size: 11
+      background: theme:Primary
+      foreground: theme:On Primary
     type: Button
     layout_properties: {grid_position: 'QPPZVN,NOOTGN'}
     event_bindings: {click: btnDashboard_click}
   - name: btnProfile
-    properties: {text: Profile, role: outlined-button, font_size: 11}
+    properties: {text: Profile, role: outlined-button, font_size: 11, background: 'theme:Primary', foreground: 'theme:On Primary'}
     type: Button
     layout_properties: {grid_position: 'QPPZVN,PMKNNB'}
     event_bindings: {click: btnProfile_click}
+    data_bindings: []
   - name: spacer_1
     properties: {height: 32}
     type: Spacer
@@ -80,7 +83,7 @@ components:
     layout_properties: {grid_position: 'IWROII,UPXRFR'}
     event_bindings: {change: selectedCSVFile_change}
   - name: process_button
-    properties: {text: Import, role: outlined-button}
+    properties: {text: Import, role: outlined-button, background: 'theme:Primary', foreground: 'theme:On Primary'}
     type: Button
     layout_properties: {grid_position: 'MKWLNI,KAFGTR'}
     event_bindings: {click: process_button_click}

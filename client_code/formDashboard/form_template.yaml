@@ -14,12 +14,12 @@ components:
     layout_properties: {grid_position: 'VWZJKQ,SHEEXF'}
     components:
     - name: btnProfile
-      properties: {text: Profile, icon: 'fa:user', border: solid}
+      properties: {text: Profile, icon: 'fa:user', border: '', background: 'theme:Primary', foreground: 'theme:On Primary'}
       type: Button
       layout_properties: {row: IHTKXH, width_xs: 2, col_xs: 0}
       event_bindings: {click: btnProfile_click}
     - name: btnImport
-      properties: {text: Import, icon: '', border: solid}
+      properties: {text: Import, icon: 'fa:upload', border: '', background: 'theme:Primary', foreground: 'theme:On Primary'}
       type: Button
       layout_properties: {row: IHTKXH, width_xs: 2, col_xs: 2}
       event_bindings: {click: btnImport_click}
