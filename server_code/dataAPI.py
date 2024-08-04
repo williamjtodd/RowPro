@@ -14,8 +14,29 @@ def process_csv(file):
         # Load the file into a pandas DataFrame
         df = pd.read_csv(file_stream)
         
+        # Convert 'Date' column to datetime format
+        if 'Date' in df.columns:
+            df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+        else:
+            return {"error": "Date column not found in the CSV file."}
+        
+        # Sort the DataFrame by the 'Date' column in descending order
+        df_sorted = df.sort_values(by='Date', ascending=False)
+        
+        # Select specific columns
+        columns_to_keep = ['Date', 'Work Distance', 'Stroke Rate/Cadence', 'Stroke Count', 'Avg Watts']
+        if not all(col in df_sorted.columns for col in columns_to_keep):
+            return {"error": "One or more required columns are missing from the CSV file."}
+        
+        df_filtered = df_sorted[columns_to_keep]
+        
+        # Get the most recent records
+        # Adjust the number of recent records as needed, e.g., top 5
+        num_recent_records = 5
+        df_recent = df_filtered.head(num_recent_records)
+        
         # Convert DataFrame to a serializable format
-        result = df.head().to_dict(orient='list')
+        result = df_recent.to_dict(orient='list')
         
         # Ensure all keys and values are serializable
         result_serializable = {

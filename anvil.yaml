@@ -37,6 +37,9 @@ db_schema:
     - name: AvgWatts
       admin_ui: {width: 200}
       type: number
+    - name: Date
+      admin_ui: {width: 200, order: 1.5}
+      type: datetime
   tbluserelements:
     client: none
     server: full
