@@ -58,14 +58,15 @@ components:
     properties: {align: center, text: Import Workouts, font_size: 20}
     type: Label
     layout_properties: {grid_position: 'KHRODT,XBFRXS'}
-  - name: selectCSVFile
+  - name: selectedCSVFile
     properties: {text: Select CSV File}
     type: FileLoader
     layout_properties: {grid_position: 'IWROII,UPXRFR'}
-  - name: btnImportWorkout
+  - name: process_button
     properties: {text: Import, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'MKWLNI,KAFGTR'}
+    event_bindings: {click: process_button_click}
 - type: FlowPanel
   properties: {}
   name: navbar_links

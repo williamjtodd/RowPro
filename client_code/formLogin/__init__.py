@@ -42,4 +42,4 @@ class formLogin(formLoginTemplate):
             alert(result['message'])
 
     def btnClose_click(self, **event_args):
-        self.remove_from_parent()
+        open_form('formLogin.formGoBack')

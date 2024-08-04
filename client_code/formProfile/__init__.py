@@ -8,8 +8,6 @@ class formProfile(formProfileTemplate):
         self.init_components(**properties)
         self.load_user_profile()
       
-    def file_loader_1_change(self, file, **event_args):
-      self.image_1.source = self.flPFP
 
     def load_user_profile(self):
         try:
@@ -48,3 +46,8 @@ class formProfile(formProfileTemplate):
         
     def btnImport_click(self, **event_args):
         open_form('formImport')
+
+    def btnLogout_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      open_form('formLogin')
+      pass

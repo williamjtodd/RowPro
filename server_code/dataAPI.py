@@ -3,6 +3,14 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 import anvil.users
+import pandas as pd
+
+@anvil.server.callable
+def process_csv(file):
+    # Load the file into a pandas DataFrame
+    df = pd.read_csv(file)
+    # Perform operations on the DataFrame
+    return df.head().to_dict()  # For example, return the first few rows
 
 @anvil.server.callable
 def sign_up_user(email, password):

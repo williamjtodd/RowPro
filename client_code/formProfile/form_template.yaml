@@ -70,6 +70,10 @@ components:
     properties: {text: Workout 3}
     type: Label
     layout_properties: {grid_position: 'IPWDPS,WAFRYL ARDNID,OZIBGR'}
+  - name: contact
+    properties: {text: Contact, align: center}
+    type: Button
+    layout_properties: {grid_position: 'IPWDPS,WAFRYL XEHNAR,ITTDGY'}
   - name: flPFP
     properties: {}
     type: FileLoader
@@ -107,10 +111,15 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'YGRUAC,IIYPFK YQAPTB,HGRFJV'}
   - name: btnSubmit
-    properties: {text: Submit}
+    properties: {text: Save Changes}
     type: Button
     layout_properties: {grid_position: 'YGRUAC,IIYPFK HKSHBA,OPSNJR'}
     event_bindings: {click: btnSubmit_click}
+  - name: btnLogout
+    properties: {text: Logout}
+    type: Button
+    layout_properties: {grid_position: 'YGRUAC,IIYPFK HKSHBA,SWDFKF'}
+    event_bindings: {click: btnLogout_click}
   - name: spacer_12
     properties: {height: 32}
     type: Spacer
