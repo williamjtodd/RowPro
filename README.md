@@ -2,7 +2,7 @@
 <img width="1079" alt="image" src="https://github.com/user-attachments/assets/0610628c-faf7-4686-8075-5afe8c7eecb3">
 
 ## Note:
-If you don't already have Concept2 logbook data, it is advised you use this file for testing/curiousity purposes: [Uploading concept2-season-2023.csv…]()
+If you don't already have Concept2 logbook data, it is advised you use this file for testing/curiousity purposes: https://github.com/williamjtodd/RowPro/blob/master/concept2-season-2023.csv
 If you don't use this file, errors will be encounted.
 
 # Signing Up and Logging In
